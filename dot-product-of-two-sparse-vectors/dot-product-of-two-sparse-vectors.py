@@ -3,25 +3,22 @@ class SparseVector:
         """
         :type nums: List[int]
         """
-        self.vect = {}
+        self.vec = {}
         for i in range(len(nums)):
-            if nums[i]!=0:
-                self.vect[i]=nums[i]
-    
-    
+            self.vec[i]=nums[i]
+
     # Return the dotProduct of two sparse vectors
     def dotProduct(self, vec):
         """
         :type vec: 'SparseVector'
         :rtype: int
         """
-        prod = 0
-        for i,n in self.vect.items():
-            m = vec.vect.get(i,0)
-            if n!=0 and m!=0:
-                prod += n*m
+        dot = 0
+        for k,v in self.vec.items():
+            if k in vec.vec:
+                dot+= v*vec.vec[k]
+        return dot
         
-        return prod
 
 # Your SparseVector object will be instantiated and called as such:
 # v1 = SparseVector(nums1)
