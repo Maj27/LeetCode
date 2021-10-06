@@ -5,18 +5,18 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         
-    
-"""
-        #return d[-1] 
-        d = [False] * len(s)    
-        for i in range(len(s)):
+        """
+                    
+        dp = [True] + [False]*len(s)
+        
+        wordDict = set(wordDict)
+        
+        for i in range(1,len(s)+1):
             for w in wordDict:
-                if w == s[i-len(w)+1:i+1] and (d[i-len(w)] or i-len(w) == -1):
-                    d[i] = True
+                if w==s[i-len(w):i] and dp[i-len(w)]:
+                    dp[i]=True
                     break
-
-        return d[-1]  
+                
+        return dp[-1]
         
-  
-        
-       
+     
