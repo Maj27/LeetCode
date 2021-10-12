@@ -4,36 +4,31 @@ class Solution(object):
         :type instructions: str
         :rtype: bool
         """
+        position = [0,0]
         direction = 90
-        curr = [0,0]
-
-        for i in range(4):
-            for ins in instructions:
+        
+        def move(ins, position, direction):
+            if direction == 0:
+                position[0] += 1
+            elif direction == 180:
+                position[0] -= 1
+            elif direction == 90:
+                position[1] += 1
+            else:#270
+                position[1] -= 1
+                
+        for ins in instructions:
+            if ins == 'G':
+                move(ins,position,direction)
+            else:
                 if ins=='L':
-                    direction+=90
-                    if direction==360:
-                        direction = 0
+                    direction = (direction+90)%360
+                if ins=='R':
+                    direction = (direction+270)%360
 
-
-                elif ins=='R':
-                    direction-=90
-                    if direction==-90:
-                        direction = 270
-
-                else:#G
-                    if direction ==90:
-                        curr[1] += 1
-                    elif direction ==270:
-                        curr[1] -= 1
-                    elif direction ==0:
-                        curr[0] += 1
-                    elif direction ==180:
-                        curr[0] -= 1
-
-            if curr== [0,0] and direction==90:
-                return True  
-
-        if curr == [0,0] and direction==90:
+        if position == [0,0] or direction !=90:
             return True
-        else: 
-            return False
+        return False
+    
+
+    
