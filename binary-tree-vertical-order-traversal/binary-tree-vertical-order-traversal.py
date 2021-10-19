@@ -14,7 +14,7 @@ class Solution(object):
             return []
 
         sol = []
-        dic = {}
+        dic = collections.defaultdict(list)
         self.minCol,self.maxCol =0,0
         
         def dfs(node, row, col):
@@ -25,10 +25,7 @@ class Solution(object):
             self.minCol = min(self.minCol,col)
             self.maxCol = max(self.maxCol,col)
             
-            if col in dic:
-                dic[col].append([row,node.val])
-            else:
-                dic[col]= [[row,node.val]]
+            dic[col].append((row,node.val))
                     
             dfs(node.left, row+1, col-1)
             dfs(node.right, row+1, col+1)
@@ -38,7 +35,7 @@ class Solution(object):
         
         for i in range(self.minCol,self.maxCol+1):
             col = sorted(dic[i], key= lambda x:x[0])
-            nodes = [n[1] for n in col]
-            sol.append(nodes)
+            values = [n[1] for n in col]
+            sol.append(values)
         return sol
         
