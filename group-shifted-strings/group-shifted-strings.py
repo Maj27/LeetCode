@@ -11,6 +11,6 @@ class Solution(object):
         dic = collections.defaultdict(list)
         for s in strings:
             dic[hash_str(s)].append(s)
-            
+
         return dic.values()
         
