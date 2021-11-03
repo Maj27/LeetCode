@@ -6,14 +6,11 @@ class Solution(object):
         :rtype: int
         """
         
-        def union(city1,city2):
-            #parent[findParent(city2)]=findParent(city1)
-            
-            root1, root2 = findParent(c1), findParent(c2)
-   
-            parent[root2] = root1  # Always join roots!
+        def union(city1,city2):            
+            p1, p2 = findParent(city1), findParent(city2)
+            parent[p2] = p1  #  join roots
  
-            
+        
         def findParent(city):
             if parent[city]!=city:
                 parent[city] = findParent(parent[city])
