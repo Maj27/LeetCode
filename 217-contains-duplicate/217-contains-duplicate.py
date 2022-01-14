@@ -1,4 +1,9 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        count = Counter(nums)
-        return True if max(count.values())>1 else False
+        unique = {}
+        for n in nums:
+            if n in unique:
+                return True
+            unique[n]=1
+        
+        return False
