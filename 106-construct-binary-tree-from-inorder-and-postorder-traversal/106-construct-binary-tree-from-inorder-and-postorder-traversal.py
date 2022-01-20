@@ -12,7 +12,7 @@ class Solution:
         
         def dfs(leftBount, rightBound):
             if leftBount>rightBound:
-                return 
+                return None
             value = postorder[self.index]
             self.index-=1
             root = TreeNode(value)
