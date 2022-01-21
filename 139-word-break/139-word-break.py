@@ -1,5 +1,6 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        '''
         wordDict = set(wordDict)
         true = set()
         false = set()
@@ -20,3 +21,16 @@ class Solution:
         
 
         return checkifexist(s)
+        '''
+        
+        dp = [True] + [False]*len(s)
+                
+        for i in range(1,len(s)+1):
+            for w in wordDict:
+                if w==s[i-len(w):i] and dp[i-len(w)]:
+                    dp[i]=True
+                    break
+                
+        return dp[-1]
+        
+        
