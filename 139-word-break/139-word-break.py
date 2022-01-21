@@ -27,7 +27,7 @@ class Solution:
                 
         for i in range(1,len(s)+1):
             for w in wordDict:
-                if w==s[i-len(w):i] and dp[i-len(w)]:
+                if dp[i-len(w)] and w==s[i-len(w):i]:
                     dp[i]=True
                     break
                 
