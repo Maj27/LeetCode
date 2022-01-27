@@ -16,12 +16,12 @@ class Solution:
             visited.add(course)
             prereqs = courseFlow[course]
         
-            coverAll = True
             for prereq in prereqs:
-                coverAll = coverAll and dfs(prereq)
-            if coverAll:
-                taken.add(course)
-            return coverAll
+                if not dfs(prereq):
+                    return False
+            
+            taken.add(course)
+            return True
         
         for i in range(numCourses):
             if not dfs(i):
