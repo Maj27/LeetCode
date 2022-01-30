@@ -29,9 +29,9 @@ class Solution:
                         
         # now check if each cell in both add to sol
         sol = []
-        for r in range(ROWS):
-            for c in range(COLS):
-                if (r,c) in pacific and (r,c) in atlantic:
+        
+        for (r,c) in pacific:
+            if (r,c) in atlantic:
                     sol.append([r,c])
              
         return sol
