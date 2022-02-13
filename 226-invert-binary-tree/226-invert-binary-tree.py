@@ -10,13 +10,14 @@ class Solution:
             return 
         
         def dfs(node):
+            if not node:
+                return 
             temp = node.left
             node.left = node.right
             node.right = temp
-            if node.left:
-                dfs(node.left)
-            if node.right:
-                dfs(node.right)
+    
+            dfs(node.left)
+            dfs(node.right)
         
         dfs(root)
         
